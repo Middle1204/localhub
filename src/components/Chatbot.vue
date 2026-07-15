@@ -2,20 +2,20 @@
   <div :class="['chatbot', { open: isOpen }]" aria-live="polite" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
     <!-- 플로팅 액션 버튼: 부산 갈매기 테마 -->
     <button 
-      class="chat-toggle" 
-      @click="toggle" 
-      :aria-expanded="isOpen" 
-      aria-controls="chat-panel" 
-      aria-label="부산 여행 챗봇 열기"
-    >
-      <svg v-if="!isOpen" class="seagull-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- 부산 갈매기 아이콘 -->
-        <path d="M12 2C11.4 2 10.9 2.3 10.6 2.8L3.5 15C3.2 15.5 3 16.1 3 16.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V16.7C21 16.1 20.8 15.5 20.5 15L13.4 2.8C13.1 2.3 12.6 2 12 2M9 10H8L6 13H5L9 6V10M16 10H17L19 13H20L16 6V10M12 11L10 15H14L12 11Z" />
-      </svg>
-      <svg v-else class="close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
+  class="chat-toggle" 
+  @click="toggle" 
+  :aria-expanded="isOpen" 
+  aria-controls="chat-panel" 
+  aria-label="부산 여행 챗봇 열기"
+>
+  <svg v-if="!isOpen" class="seagull-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- 채팅 버블 아이콘 -->
+    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+  </svg>
+  <svg v-else class="close-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
 
     <!-- 채팅 패널 -->
     <div id="chat-panel" class="chat-panel" v-if="isOpen">
