@@ -120,8 +120,36 @@ export function deletePost(id, password) {
     return false
   }
   
+  // 게시글 삭제
   posts.splice(postIndex, 1)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(posts))
+  
+  // 게시글 관련 데이터 정리 (좋아요, 북마크, 조회수)
+  // 1. 좋아요 제거
+  const userLikes = JSON.parse(localStorage.getItem(LIKES_KEY) || '[]')
+  const likeIndex = userLikes.indexOf(id)
+  if (likeIndex > -1) {
+    userLikes.splice(likeIndex, 1)
+    localStorage.setItem(LIKES_KEY, JSON.stringify(userLikes))
+  }
+  
+  // 2. 북마크 제거
+  const bookmarks = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) || '[]')
+  const bookmarkIndex = bookmarks.indexOf(id)
+  if (bookmarkIndex > -1) {
+    bookmarks.splice(bookmarkIndex, 1)
+    localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks))
+  }
+  
+  // 3. 북마크 개수 제거
+  const bookmarksDetail = JSON.parse(localStorage.getItem(BOOKMARKS_DETAIL_KEY) || '{}')
+  delete bookmarksDetail[id]
+  localStorage.setItem(BOOKMARKS_DETAIL_KEY, JSON.stringify(bookmarksDetail))
+  
+  // 4. 조회수 제거
+  const viewCounts = JSON.parse(localStorage.getItem(VIEW_COUNTS_KEY) || '{}')
+  delete viewCounts[id]
+  localStorage.setItem(VIEW_COUNTS_KEY, JSON.stringify(viewCounts))
   
   return true
 }
