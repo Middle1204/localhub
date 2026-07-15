@@ -327,16 +327,14 @@ function formatTime(timestamp) {
 </script>
 
 <style scoped>
-/* 부산 테마 색상 팔레트 */
-:root {
+/* 부산 테마 색상 팔레트 - chatbot 컴포넌트에서 정의 */
+.chatbot {
   --busan-blue: #0066cc;      /* 맑은 바다 파란색 */
   --busan-light-blue: #e6f2ff; /* 밝은 파란색 */
   --busan-sand: #ffc966;       /* 따뜻한 모래 노란색 */
   --busan-coral: #ff8c5a;      /* 산호색 */
   --busan-dark: #1a1a2e;       /* 진한 네이비 */
-}
-
-.chatbot {
+  
   position: fixed;
   bottom: 24px;
   right: 24px;
@@ -350,7 +348,7 @@ function formatTime(timestamp) {
   height: 60px;
   border-radius: 50%;
   border: none;
-  background: linear-gradient(135deg, var(--busan-blue) 0%, var(--busan-coral) 100%);
+  background: linear-gradient(135deg, #0066cc 0%, #ff8c5a 100%);
   color: white;
   cursor: pointer;
   display: flex;
@@ -359,6 +357,7 @@ function formatTime(timestamp) {
   box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
   transition: all 0.3s ease;
   font-size: 24px;
+  z-index: 10000;
 }
 
 .chat-toggle:hover {
@@ -374,6 +373,11 @@ function formatTime(timestamp) {
   width: 32px;
   height: 32px;
   animation: float 3s ease-in-out infinite;
+}
+
+.close-icon {
+  width: 20px;
+  height: 20px;
 }
 
 @keyframes float {
@@ -410,7 +414,7 @@ function formatTime(timestamp) {
 
 /* 헤더 */
 .chat-header {
-  background: linear-gradient(135deg, var(--busan-blue) 0%, var(--busan-coral) 100%);
+  background: linear-gradient(135deg, #0066cc 0%, #ff8c5a 100%);
   color: white;
   padding: 16px;
   display: flex;
@@ -474,10 +478,10 @@ function formatTime(timestamp) {
 }
 
 .keyword-btn {
-  background: var(--busan-light-blue);
-  border: 1px solid var(--busan-blue);
+  background: #e6f2ff;
+  border: 1px solid #0066cc;
   border-radius: 8px;
-  color: var(--busan-blue);
+  color: #0066cc;
   padding: 10px 12px;
   font-size: 12px;
   font-weight: 500;
@@ -486,7 +490,7 @@ function formatTime(timestamp) {
 }
 
 .keyword-btn:hover {
-  background: var(--busan-blue);
+  background: #0066cc;
   color: white;
 }
 
@@ -539,14 +543,14 @@ function formatTime(timestamp) {
 }
 
 .message.user .bubble {
-  background: linear-gradient(135deg, var(--busan-blue) 0%, #0052a3 100%);
+  background: #0066cc;
   color: white;
   border-bottom-right-radius: 4px;
 }
 
 .message.bot .bubble {
-  background: var(--busan-light-blue);
-  color: var(--busan-dark);
+  background: #e6f2ff;
+  color: #1a1a2e;
   border-bottom-left-radius: 4px;
 }
 
@@ -554,6 +558,7 @@ function formatTime(timestamp) {
   font-size: 14px;
   line-height: 1.4;
   white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .message-time {
@@ -561,19 +566,18 @@ function formatTime(timestamp) {
   opacity: 0.7;
 }
 
-/* 입력 표시기 (점 애니메이션) */
+/* 입력 표시기 */
 .typing {
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 12px 16px;
 }
 
 .typing-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--busan-blue);
+  background: #0066cc;
   animation: typing 1.4s infinite;
 }
 
@@ -625,12 +629,12 @@ function formatTime(timestamp) {
 
 .chat-form input:focus {
   outline: none;
-  border-color: var(--busan-blue);
-  box-shadow: 0 0 0 3px var(--busan-light-blue);
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px #e6f2ff;
 }
 
 .btn-send {
-  background: linear-gradient(135deg, var(--busan-blue) 0%, var(--busan-coral) 100%);
+  background: linear-gradient(135deg, #0066cc 0%, #ff8c5a 100%);
   border: none;
   border-radius: 8px;
   color: white;
@@ -719,18 +723,18 @@ function formatTime(timestamp) {
   }
 
   .chat-form input:focus {
-    border-color: var(--busan-coral);
+    border-color: #ff8c5a;
     box-shadow: 0 0 0 3px rgba(255, 140, 90, 0.1);
   }
 
   .keyword-btn {
     background: rgba(0, 102, 204, 0.15);
-    color: var(--busan-sand);
-    border-color: var(--busan-coral);
+    color: #ffc966;
+    border-color: #ff8c5a;
   }
 
   .keyword-btn:hover {
-    background: var(--busan-coral);
+    background: #ff8c5a;
     color: white;
   }
 }
@@ -739,7 +743,7 @@ function formatTime(timestamp) {
 .chat-toggle:focus-visible,
 .btn-send:focus-visible,
 .btn-reset:focus-visible {
-  outline: 2px solid var(--busan-blue);
+  outline: 2px solid #0066cc;
   outline-offset: 2px;
 }
 
