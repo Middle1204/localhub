@@ -1,17 +1,39 @@
 <script setup>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
-import Chatbot from './components/Chatbot.vue'
+import { useRouter } from 'vue-router'
+import ChatView from './views/ChatView.vue'
+
+const router = useRouter()
 </script>
 
 <template>
   <div id="app">
-    <Header />
-    <main id="center">
-      <h1>LocalHub에 오신 걸 환영해요 🏠</h1>
-      <p>동네 게시글을 함께 관리해요.</p>
+    <main>
+      <RouterView />
     </main>
-    <Footer />
-    <Chatbot />
+    <ChatView />
   </div>
 </template>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+}
+</style>
