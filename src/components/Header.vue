@@ -31,7 +31,7 @@
             @click="scrollToMap"
             class="hover:text-sky-500 px-1 py-2 text-sm transition-all relative cursor-pointer"
           >
-            맛집지도
+            명소지도
           </button>
           <router-link 
             to="/board" 
@@ -132,7 +132,7 @@
           <input 
             v-model="searchQuery"
             type="text" 
-            placeholder="부산 명소, 맛집 검색..." 
+            placeholder="부산 명소 검색..." 
             class="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-full bg-slate-50 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 text-sm"
             @keyup.enter="handleSearch"
           />
@@ -151,7 +151,7 @@
           @click="scrollToMap"
           class="block w-full text-left px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-500 cursor-pointer"
         >
-          맛집지도
+          명소지도
         </button>
         <router-link 
           to="/board" 
