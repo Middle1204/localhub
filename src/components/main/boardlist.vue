@@ -1,29 +1,25 @@
 <template>
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
-      <div>
-        <div class="flex items-center gap-2 mb-2">
-          <span class="w-2.5 h-6 bg-sky-500 rounded-full"></span>
-          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800 tracking-tight">
-            실시간 인기 로컬 추천글
-          </h2>
-        </div>
-        <p class="text-xs sm:text-sm text-slate-500">
-          부산 시민들과 명소 탐험가들이 직접 제보한 광고 없는 청정 리뷰 목록입니다.
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- 섹션 헤더 -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-sky-50 to-blue-50 rounded-full mb-4 border border-sky-100">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+        </span>
+        <span class="text-xs font-semibold text-sky-700 uppercase tracking-wide">인기 게시글</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-3 text-center">
+        실시간 로컬 추천글
+      </h2>
+      <div class="flex justify-center">
+        <p class="text-slate-600 max-w-2xl text-center">
+          부산 시민들과 명소 탐험가들이 직접 제보한 광고 없는 청정 리뷰 목록입니다
         </p>
       </div>
-      
-      <!-- Go to Board Route Link -->
-      <router-link 
-        to="/board" 
-        class="text-xs sm:text-sm font-bold text-sky-500 hover:text-sky-600 flex items-center gap-1 group transition-colors shrink-0"
-      >
-        전체글 보러가기 
-        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-      </router-link>
     </div>
 
-    <!-- Grid Layout of Popular Cards -->
+    <!-- 게시글 그리드 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div 
         v-for="(post, idx) in popularPosts" 

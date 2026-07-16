@@ -9,12 +9,14 @@
         </span>
         <span class="text-xs font-semibold text-sky-700 uppercase tracking-wide">실시간 트래픽</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-3">
+      <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-3 text-center">
         일주일 트래픽 현황
       </h2>
-      <p class="text-slate-600 max-w-2xl mx-auto">
-        로컬허브의 최근 7일간 페이지 조회수와 방문자 수를 투명하게 공개합니다
-      </p>
+      <div class="flex justify-center">
+        <p class="text-slate-600 max-w-2xl text-center">
+          로컬허브의 최근 7일간 페이지 조회수와 방문자 수를 투명하게 공개합니다
+        </p>
+      </div>
     </div>
 
     <!-- 메인 차트 카드 -->

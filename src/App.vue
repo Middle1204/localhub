@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter } from 'vue-router'
-import { ref, provide } from 'vue';
+import { ref, provide, onMounted, watch } from 'vue';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 import Chatbot from './components/Chatbot.vue';
@@ -22,6 +22,16 @@ const openChatbot = () => {
 
 // 자식 컴포넌트에서 챗봇을 열 수 있도록 제공
 provide('openChatbot', openChatbot);
+
+// 페이지 로드 시 항상 맨 위로 스크롤
+onMounted(() => {
+  window.scrollTo(0, 0);
+});
+
+// 라우팅 변경 시 맨 위로 스크롤
+watch(() => router.currentRoute.value.path, () => {
+  window.scrollTo(0, 0);
+});
 
 </script>
 

@@ -40,14 +40,13 @@
           >
             게시판
           </router-link>
-          <router-link 
-            to="/chat" 
-            class="hover:text-sky-500 px-1 py-2 text-sm transition-all relative flex items-center gap-1"
-            active-class="text-sky-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-sky-500 after:rounded-full"
+          <button 
+            @click="openChatbot"
+            class="hover:text-sky-500 px-1 py-2 text-sm transition-all relative flex items-center gap-1 cursor-pointer"
           >
             AI채팅
             <span class="inline-block px-1.5 py-0.5 bg-rose-500 text-white text-[9px] font-bold rounded-md animate-bounce">AI</span>
-          </router-link>
+          </button>
         </nav>
 
         <div class="hidden md:flex items-center flex-1 max-w-xs mx-8 relative">
@@ -161,26 +160,25 @@
         >
           게시판
         </router-link>
-        <router-link 
-          to="/chat" 
-          class="block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-500 flex items-center justify-between"
-          active-class="bg-sky-50/50 text-sky-500 font-bold"
-          @click="isMobileMenuOpen = false"
+        <button
+          @click="() => { openChatbot(); isMobileMenuOpen = false; }"
+          class="block w-full text-left px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-500 flex items-center justify-between cursor-pointer"
         >
           <span>AI채팅</span>
           <span class="px-2 py-0.5 bg-rose-500 text-white text-[10px] font-bold rounded-full animate-pulse">LIVE</span>
-        </router-link>
+        </button>
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, inject } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { svgIcons } from '../assets/svgGroup.js';
 
 const router = useRouter();
+const openChatbot = inject('openChatbot');
 const route = useRoute();
 const searchQuery = ref('');
 const isMobileMenuOpen = ref(false);
