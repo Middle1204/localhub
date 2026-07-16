@@ -1,5 +1,5 @@
 <template>
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+  <section data-map-preview class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
     <div class="mb-8">
       <div class="flex items-center gap-2 mb-2">
         <span class="w-2.5 h-6 bg-sky-500 rounded-full"></span>

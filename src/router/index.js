@@ -4,6 +4,7 @@ import BoardListView from '../views/BoardListView.vue';
 import BoardCreateView from '../views/BoardCreateView.vue';
 import BoardDetailView from '../views/BoardDetailView.vue';
 import ChatView from '../views/ChatView.vue';
+import SearchResults from '../views/SearchResults.vue';
 
 const routes = [
   {
@@ -33,11 +34,25 @@ const routes = [
     name: 'Chat',
     component: ChatView,
   },
+  {
+    path: '/search',
+    name: 'Search',
+    component: SearchResults,
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    // 저장된 위치가 있으면 (브라우저 뒤로가기) 그 위치로 이동
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      // 그렇지 않으면 페이지 맨 위로 스크롤
+      return { top: 0, behavior: 'smooth' };
+    }
+  },
 });
 
 export default router;
