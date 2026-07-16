@@ -18,7 +18,7 @@
           </div>
           
           <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
-            localhub 부산은 별도의 회원가입 절차 없이, 오직 신뢰할 수 있는 로컬 미식 정보만을 투명하게 공유하는 비회원 전용 맛집 매칭 커뮤니티 플랫폼입니다. 광고성 스팸 없는 청정 구역을 지향합니다.
+            localhub 부산은 별도의 회원가입 절차 없이, 오직 신뢰할 수 있는 로컬 정보만을 투명하게 공유하는 비회원 전용 명소 추천 커뮤니티 플랫폼입니다. 광고성 스팸 없는 청정 구역을 지향합니다.
           </p>
 
           <!-- Social Link Icons -->
@@ -41,7 +41,7 @@
         <div>
           <h4 class="text-white text-sm font-bold tracking-wider mb-4 uppercase flex items-center gap-1.5">
             <span class="w-1 h-3.5 bg-sky-500 rounded-full"></span>
-            맛집 카테고리
+            명소 카테고리
           </h4>
           <ul class="space-y-2.5 text-xs text-slate-400">
             <li v-for="(category, idx) in boardCategories" :key="idx">
@@ -81,7 +81,7 @@
     <!-- Lower Subfooter with Copyright & Platform Metadata -->
     <div class="border-t border-slate-800 py-6 bg-slate-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-        <p>© {{ currentYear }} localhub Busan. All rights reserved. 부산 로컬 미식 네트워킹 플랫폼.</p>
+        <p>© {{ currentYear }} localhub Busan. All rights reserved. 부산 로컬 명소 네트워킹 플랫폼.</p>
         
         <div class="flex gap-6">
           <span class="flex items-center gap-1.5">
@@ -116,10 +116,10 @@ const socialLinks = [
 // Board Categories data (to match router endpoints)
 const boardCategories = [
   { name: '전체 자유 제보', path: '/board' },
-  { name: '뜨끈뜨끈 국밥지도', path: '/map' },
-  { name: '부산 수변 횟집 실시간 톡', path: '/board' },
-  { name: '오션뷰 카페 조사단', path: '/board' },
-  { name: '로컬비 AI 추천챗', path: '/ai-chat' }
+  { name: '부산 관광지 명소', path: '/search?q=관광지' },
+  { name: '해변 & 해수욕장', path: '/search?q=해수욕장' },
+  { name: '문화시설 & 박물관', path: '/search?q=문화시설' },
+  { name: '로컬비 AI 추천챗', path: '/chat' }
 ];
 
 // Community Policies & Guidelines

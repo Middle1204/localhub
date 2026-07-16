@@ -4,11 +4,11 @@
       <div class="flex items-center gap-2 mb-2">
         <span class="w-2.5 h-6 bg-sky-500 rounded-full"></span>
         <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800 tracking-tight">
-          🗺️ 부산 구역별 테마 맛지도
+          🗺️ 부산 구역별 테마 명소지도
         </h2>
       </div>
       <p class="text-xs sm:text-sm text-slate-500">
-        지도의 로컬 마커를 클릭하여 부산 지역 대표 구역의 평점 높은 토박이 인증 맛집 목록을 확인하세요.
+        지도의 로컬 마커를 클릭하여 부산 지역 대표 구역의 평점 높은 토박이 인증 명소 목록을 확인하세요.
       </p>
     </div>
 
@@ -61,7 +61,7 @@
               <h3 class="text-base font-extrabold text-slate-800 mt-0.5">{{ activeZone.title }}</h3>
             </div>
             <span class="px-2 py-1 bg-sky-50 text-sky-700 rounded-lg text-[10px] font-extrabold">
-              {{ activeZone.restaurants.length }}개 맛집
+              {{ activeZone.restaurants.length }}개 명소
             </span>
           </div>
 
@@ -114,60 +114,60 @@ const mapZones = {
   haeundae: {
     lat: 35.1587,
     lng: 129.1604,
-    title: "해운대·광안리 낭만 맛길",
+    title: "해운대·광안리 해변 명소",
     sub: "HAEUNDAE & GWANGALLI",
     restaurants: [
       {
-        name: "수변최고돼지국밥 민락본점",
-        tag: "돼지국밥 전문",
-        rating: "4.8 (평가 1,230개)",
-        comment: "항정국밥 고기 품질이 대단히 야들야들하며, 무조건 현장 웨이팅 전 테이블링 앱 예약을 추천드려요."
+        name: "해운대 해수욕장",
+        tag: "해변 명소",
+        rating: "4.8 (평가 12,350개)",
+        comment: "국내 최고의 해수욕장으로 넓은 백사장과 맑은 바다, 다양한 편의시설이 완비된 부산 대표 관광지입니다."
       },
       {
-        name: "해운대 가야밀면",
-        tag: "밀면 전문점",
-        rating: "4.7 (평가 945개)",
-        comment: "시원하고 은은한 한약재 깊이가 담긴 육수와 직접 빚은 얇은 피 피자식 고기만두 조화가 일품."
+        name: "광안대교 야경",
+        tag: "야경 명소",
+        rating: "4.9 (평가 8,945개)",
+        comment: "광안리 해변에서 바라보는 광안대교의 아름다운 조명쇼는 부산의 밤을 대표하는 최고의 풍경입니다."
       }
     ]
   },
   nampo: {
     lat: 35.0975,
     lng: 129.0315,
-    title: "남포·자갈치 유서 깊은 노포길",
+    title: "남포·자갈치 전통 시장",
     sub: "NAMPO & JAGALCHI OLD SEAPORT",
     restaurants: [
       {
-        name: "백화양곱창",
-        tag: "양곱창 전문 노포",
-        rating: "4.6 (평가 680개)",
-        comment: "자갈치 시장 뒤편, 연탄불 석쇠에 직접 양념 양곱창을 구워주는 특유의 야생적인 노포 정취."
+        name: "자갈치 시장",
+        tag: "전통 수산시장",
+        rating: "4.6 (평가 6,780개)",
+        comment: "싱싱한 해산물을 직접 보고 구매할 수 있는 부산 최대의 수산시장으로, 2층 식당에서 회를 즐길 수 있습니다."
       },
       {
-        name: "이재모피자 본점",
-        tag: "로컬 수제피자 명가",
-        rating: "4.9 (평가 2,400개)",
-        comment: "신선한 국산 임실 치즈를 아낌없이 뿌린 명실상부 부산의 넘버원 인생 치즈크러스트 피자집."
+        name: "부산타워 (용두산공원)",
+        tag: "전망대",
+        rating: "4.5 (평가 5,200개)",
+        comment: "부산항과 시내 전경을 한눈에 담을 수 있는 상징적인 타워로, 용두산공원 내에 위치해 있습니다."
       }
     ]
   },
   seomyeon: {
     lat: 35.1583,
     lng: 129.0620,
-    title: "서면 번화가 전포사잇길",
-    sub: "SEOMYEON & JEONPO STREET",
+    title: "서면 번화가 & 감천마을",
+    sub: "SEOMYEON & GAMCHEON",
     restaurants: [
       {
-        name: "송정3대국밥",
-        tag: "24시 국밥노포",
-        rating: "4.5 (평가 712개)",
-        comment: "고기를 얇게 썰어내어 매우 부드럽고 국물이 맑은 이북식 스타일입니다. 부추 겉절이를 팍팍 넣으세요!"
+        name: "감천문화마을",
+        tag: "예술마을",
+        rating: "4.7 (평가 9,312개)",
+        comment: "알록달록한 색채의 집들이 산비탈을 따라 층층이 쌓인 부산의 산토리니, 예술과 문화가 가득한 공간입니다."
       },
       {
-        name: "전포 베르크 로스터스",
-        tag: "에스프레소 바",
-        rating: "4.7 (평가 320개)",
-        comment: "어둡고 성스러운 종교적 무드의 인테리어 공간에서 개성적인 싱글오리진 스페셜티를 서빙합니다."
+        name: "서면 지하상가",
+        tag: "쇼핑 명소",
+        rating: "4.4 (평가 3,820개)",
+        comment: "부산 최대의 지하 쇼핑몰로 패션, 액세서리, 화장품 등 다양한 상품을 합리적인 가격에 만날 수 있습니다."
       }
     ]
   }
