@@ -1,60 +1,61 @@
 // src/services/PlaceService.js
 
+// 정적 import로 모든 데이터 파일을 미리 로드 (배포 환경 호환성)
+import 관광지Data from '../data/places/부산_관광지.json';
+import 레포츠Data from '../data/places/부산_레포츠.json';
+import 문화시설Data from '../data/places/부산_문화시설.json';
+import 쇼핑Data from '../data/places/부산_쇼핑.json';
+import 숙박Data from '../data/places/부산_숙박.json';
+import 여행코스Data from '../data/places/부산_여행코스.json';
+import 축제공연행사Data from '../data/places/부산_축제공연행사.json';
+
 /**
- * 카테고리 정의
+ * 카테고리 정의 (정적 데이터와 매핑)
  */
 const CATEGORIES = {
-  TOURIST: { id: 'tourist', label: '관광지', file: '부산_관광지.json' },
-  SPORTS: { id: 'sports', label: '레포츠', file: '부산_레포츠.json' },
-  CULTURE: { id: 'culture', label: '문화시설', file: '부산_문화시설.json' },
-  SHOPPING: { id: 'shopping', label: '쇼핑', file: '부산_쇼핑.json' },
-  ACCOMMODATION: { id: 'accommodation', label: '숙박', file: '부산_숙박.json' },
-  COURSE: { id: 'course', label: '여행코스', file: '부산_여행코스.json' },
-  FESTIVAL: { id: 'festival', label: '축제공연행사', file: '부산_축제공연행사.json' }
+  TOURIST: { id: 'tourist', label: '관광지', data: 관광지Data },
+  SPORTS: { id: 'sports', label: '레포츠', data: 레포츠Data },
+  CULTURE: { id: 'culture', label: '문화시설', data: 문화시설Data },
+  SHOPPING: { id: 'shopping', label: '쇼핑', data: 쇼핑Data },
+  ACCOMMODATION: { id: 'accommodation', label: '숙박', data: 숙박Data },
+  COURSE: { id: 'course', label: '여행코스', data: 여행코스Data },
+  FESTIVAL: { id: 'festival', label: '축제공연행사', data: 축제공연행사Data }
 }
 
 /**
- * 동적 데이터 로드 캐시
+ * 가공된 데이터 캐시
  */
 const dataCache = new Map()
 
 /**
- * JSON 파일 비동기 로드
+ * 카테고리 데이터 로드 및 가공 (정적 데이터 사용)
  * @param {string} categoryId - 카테고리 ID
- * @returns {Promise<Array>} 가게 데이터 배열
+ * @returns {Array} 가게 데이터 배열
  */
-async function loadCategoryData(categoryId) {
+function loadCategoryData(categoryId) {
   // 캐시에 있으면 반환
   if (dataCache.has(categoryId)) {
     return dataCache.get(categoryId)
   }
 
   const category = CATEGORIES[categoryId.toUpperCase()] || CATEGORIES.SHOPPING
+  const items = category.data.items || []
   
-  try {
-    // Vite 경고 억제 - 런타임 시 동적으로 파일을 필요할 때만 로드
-    const module = await import(/* @vite-ignore */ `../data/places/${category.file}`)
-    const items = module.default.items || []
-    
-    // 가공된 데이터 저장
-    const processedData = items.map(place => ({
-      id: place.contentid,
-      title: place.title,
-      image: place.firstimage || place.firstimage2 || '',
-      address: place.addr1,
-      tel: place.tel || '정보 없음',
-      category: category.id,
-      categoryLabel: category.label
-    }))
-    
-    // 캐시 저장
-    dataCache.set(categoryId, processedData)
-    
-    return processedData
-  } catch (error) {
-    console.error(`Failed to load ${category.file}:`, error)
-    return []
-  }
+  // 가공된 데이터 저장
+  const processedData = items.map(place => ({
+    id: place.contentid,
+    title: place.title,
+    image: place.firstimage || place.firstimage2 || '',
+    address: place.addr1,
+    tel: place.tel || '정보 없음',
+    category: category.id,
+    categoryLabel: category.label
+  }))
+  
+  // 캐시 저장
+  dataCache.set(categoryId, processedData)
+  
+  return processedData
 }
 
 /**
@@ -69,26 +70,26 @@ export function getAllCategories() {
 }
 
 /**
- * 특정 카테고리의 모든 가게 조회 (비동기)
+ * 특정 카테고리의 모든 가게 조회
  * @param {string} categoryId - 카테고리 ID (기본값: 'SHOPPING')
  * @param {number} limit - 최대 개수 (기본값: 20)
- * @returns {Promise<Array>} 가게 배열
+ * @returns {Array} 가게 배열
  */
-export async function getPlacesByCategory(categoryId = 'SHOPPING', limit = 20) {
-  const places = await loadCategoryData(categoryId)
+export function getPlacesByCategory(categoryId = 'SHOPPING', limit = 20) {
+  const places = loadCategoryData(categoryId)
   return places.slice(0, limit)
 }
 
 /**
  * 모든 카테고리에서 가게 조회
  * @param {number} limit - 카테고리당 최대 개수
- * @returns {Promise<Array>} 모든 카테고리의 가게들
+ * @returns {Array} 모든 카테고리의 가게들
  */
-export async function getAllPlaces(limit = 5) {
+export function getAllPlaces(limit = 5) {
   const allPlaces = []
   
   for (const category of Object.keys(CATEGORIES)) {
-    const places = await loadCategoryData(category)
+    const places = loadCategoryData(category)
     allPlaces.push(...places.slice(0, limit))
   }
   
@@ -98,11 +99,11 @@ export async function getAllPlaces(limit = 5) {
 /**
  * ID로 가게 조회 (모든 카테고리에서 검색)
  * @param {string} id - 가게 ID
- * @returns {Promise<Object|null>}
+ * @returns {Object|null}
  */
-export async function getPlaceById(id) {
+export function getPlaceById(id) {
   for (const categoryKey of Object.keys(CATEGORIES)) {
-    const places = await loadCategoryData(categoryKey)
+    const places = loadCategoryData(categoryKey)
     // 타입 불일치 문제 해결: 문자열로 변환하여 비교
     const place = places.find(p => String(p.id) === String(id))
     if (place) return place
@@ -114,19 +115,19 @@ export async function getPlaceById(id) {
  * 키워드로 가게 검색 (특정 카테고리)
  * @param {string} keyword - 검색 키워드
  * @param {string} categoryId - 카테고리 ID (선택사항: 공백이면 전체 검색)
- * @returns {Promise<Array>} 검색 결과
+ * @returns {Array} 검색 결과
  */
-export async function searchPlaces(keyword, categoryId = '') {
+export function searchPlaces(keyword, categoryId = '') {
   const lowerKeyword = keyword.toLowerCase()
   let searchData = []
 
   if (categoryId) {
     // 특정 카테고리에서만 검색
-    searchData = await loadCategoryData(categoryId)
+    searchData = loadCategoryData(categoryId)
   } else {
     // 모든 카테고리에서 검색
     for (const key of Object.keys(CATEGORIES)) {
-      const places = await loadCategoryData(key)
+      const places = loadCategoryData(key)
       searchData.push(...places)
     }
   }
@@ -139,13 +140,13 @@ export async function searchPlaces(keyword, categoryId = '') {
 
 /**
  * 카테고리별 가게 개수 조회
- * @returns {Promise<Object>} { categoryId: count }
+ * @returns {Object} { categoryId: count }
  */
-export async function getCategoryCounts() {
+export function getCategoryCounts() {
   const counts = {}
   
   for (const categoryKey of Object.keys(CATEGORIES)) {
-    const places = await loadCategoryData(categoryKey)
+    const places = loadCategoryData(categoryKey)
     counts[categoryKey] = places.length
   }
   

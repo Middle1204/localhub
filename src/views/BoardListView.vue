@@ -15,11 +15,11 @@ const posts = ref([])
 const searchKeyword = ref('')
 const placesCache = new Map()
 
-onMounted(async () => {
-  await loadPosts()
+onMounted(() => {
+  loadPosts()
 })
 
-async function loadPosts() {
+function loadPosts() {
   const allPosts = getAllPosts().sort((a, b) => 
     new Date(b.timestamp) - new Date(a.timestamp)
   )
@@ -27,7 +27,7 @@ async function loadPosts() {
   for (const post of allPosts) {
     if (post.placeId && !placesCache.has(post.placeId)) {
       try {
-        const placeInfo = await getPlaceById(post.placeId)
+        const placeInfo = getPlaceById(post.placeId)
         if (placeInfo) {
           placesCache.set(post.placeId, placeInfo)
         }
