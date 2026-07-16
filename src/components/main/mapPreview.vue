@@ -17,81 +17,38 @@
       <!-- Left side: Interactive Map Area (API Integration Placeholder) -->
       <div class="lg:col-span-2 bg-sky-50/40 h-[450px] relative flex items-center justify-center overflow-hidden select-none">
         
-        <!-- API MAP CONTAINER PLACEHOLDER -->
-        <!-- 실지 지도 API(Naver/Kakao)를 연동할 때 아래 주석을 풀고 사용하고, 바로 아래의 mock-map을 지우시면 됩니다. -->
-        <!-- <div id="real-busan-map" class="absolute inset-0 z-0"></div> -->
+        <!-- API MAP CONTAINER -->
+        <div id="real-busan-map" class="absolute inset-0 z-0"></div>
 
-        <!-- MOCK INTERACTIVE MAP GRAPHIC (Fallback visual design) -->
-        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#000 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
-        
-        <!-- Decorative Ocean Waves representing Busan Bay -->
-        <div class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-sky-200/50 to-sky-100/10 transform skew-y-1 border-t border-sky-200/60 pointer-events-none">
-          <span class="absolute bottom-4 left-6 text-sky-500/70 font-bold text-xs tracking-widest">
-            <i class="fa-solid fa-ship mr-1"></i> BUSAN DEEP BLUE OCEAN
-          </span>
+        <!-- Error State -->
+        <div v-if="mapError" class="absolute inset-0 z-10 bg-red-50 flex flex-col items-center justify-center p-6">
+           <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#ef4444 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
+           <div class="flex flex-col items-center gap-3 max-w-md text-center relative z-10">
+             <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+               <i class="fa-solid fa-exclamation-triangle text-red-600 text-xl"></i>
+             </div>
+             <p class="text-red-700 text-sm font-bold">{{ mapError }}</p>
+             <div class="mt-2 p-4 bg-white rounded-lg border border-red-200 text-left text-xs text-slate-700">
+               <p class="font-bold mb-2">403 에러 해결 방법:</p>
+               <ol class="list-decimal list-inside space-y-1">
+                 <li><a href="https://developers.kakao.com/console/app" target="_blank" class="text-sky-600 hover:underline">카카오 개발자 콘솔</a> 접속</li>
+                 <li>내 애플리케이션 선택</li>
+                 <li>'플랫폼' 메뉴에서 'Web 플랫폼 등록' 클릭</li>
+                 <li>사이트 도메인: <code class="bg-slate-100 px-1 py-0.5 rounded">http://localhost:5173</code> 추가</li>
+                 <li>JavaScript 키 확인 및 .env 파일 재확인</li>
+               </ol>
+             </div>
+           </div>
         </div>
 
-        <div class="absolute right-1/4 bottom-16 w-32 h-20 rounded-full bg-emerald-100/40 border border-emerald-200/60 flex items-center justify-center pointer-events-none">
-          <span class="text-emerald-700/50 font-bold text-xs">영도 / 태종대</span>
+        <!-- Loading State -->
+        <div v-else-if="!mapLoaded" class="absolute inset-0 z-10 bg-sky-50 flex flex-col items-center justify-center">
+           <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#000 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
+           <div class="flex flex-col items-center gap-3">
+             <div class="w-10 h-10 border-4 border-sky-500/20 border-t-sky-500 rounded-full animate-spin"></div>
+             <p class="text-slate-400 text-xs font-medium italic">지도 데이터를 불러오는 중...</p>
+           </div>
         </div>
-
-        <!-- Pin 1: Haeundae & Gwangalli -->
-        <button 
-          @click="selectZone('haeundae')" 
-          class="absolute right-1/4 top-1/3 group/pin focus:outline-none z-10 transition-transform hover:scale-110"
-        >
-          <div class="relative flex items-center justify-center">
-            <span class="absolute inline-flex h-12 w-12 rounded-full bg-sky-500/20 animate-ping opacity-75"></span>
-            <div 
-              class="relative w-11 h-11 rounded-full flex items-center justify-center shadow-lg border-2 border-white transition-all duration-300"
-              :class="activeZoneKey === 'haeundae' ? 'bg-sky-500 text-white' : 'bg-white text-sky-500'"
-            >
-              <i class="fa-solid fa-umbrella-beach text-sm"></i>
-            </div>
-          </div>
-          <div class="absolute top-13 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded shadow-md whitespace-nowrap">
-            해운대·광안리
-          </div>
-        </button>
-
-        <!-- Pin 2: Nampo & Jagalchi -->
-        <button 
-          @click="selectZone('nampo')" 
-          class="absolute left-1/3 top-1/2 group/pin focus:outline-none z-10 transition-transform hover:scale-110"
-        >
-          <div class="relative flex items-center justify-center">
-            <span class="absolute inline-flex h-12 w-12 rounded-full bg-blue-500/20 animate-ping opacity-75"></span>
-            <div 
-              class="relative w-11 h-11 rounded-full flex items-center justify-center shadow-lg border-2 border-white transition-all duration-300"
-              :class="activeZoneKey === 'nampo' ? 'bg-blue-600 text-white' : 'bg-white text-blue-500'"
-            >
-              <i class="fa-solid fa-fish text-sm"></i>
-            </div>
-          </div>
-          <div class="absolute top-13 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded shadow-md whitespace-nowrap">
-            남포·자갈치 원조길
-          </div>
-        </button>
-
-        <!-- Pin 3: Seomyeon -->
-        <button 
-          @click="selectZone('seomyeon')" 
-          class="absolute left-1/2 top-1/4 group/pin focus:outline-none z-10 transition-transform hover:scale-110"
-        >
-          <div class="relative flex items-center justify-center">
-            <span class="absolute inline-flex h-12 w-12 rounded-full bg-indigo-500/20 animate-ping opacity-75"></span>
-            <div 
-              class="relative w-11 h-11 rounded-full flex items-center justify-center shadow-lg border-2 border-white transition-all duration-300"
-              :class="activeZoneKey === 'seomyeon' ? 'bg-indigo-600 text-white' : 'bg-white text-indigo-500'"
-            >
-              <i class="fa-solid fa-bullseye text-sm"></i>
-            </div>
-          </div>
-          <div class="absolute top-13 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded shadow-md whitespace-nowrap">
-            서면 핫스팟
-          </div>
-        </button>
-
       </div>
 
       <!-- Right side: Selected Zone's Restaurant Details -->
@@ -155,6 +112,8 @@ import { ref, computed, onMounted } from 'vue';
 // Mock Database matching districts in Busan
 const mapZones = {
   haeundae: {
+    lat: 35.1587,
+    lng: 129.1604,
     title: "해운대·광안리 낭만 맛길",
     sub: "HAEUNDAE & GWANGALLI",
     restaurants: [
@@ -173,6 +132,8 @@ const mapZones = {
     ]
   },
   nampo: {
+    lat: 35.0975,
+    lng: 129.0315,
     title: "남포·자갈치 유서 깊은 노포길",
     sub: "NAMPO & JAGALCHI OLD SEAPORT",
     restaurants: [
@@ -191,6 +152,8 @@ const mapZones = {
     ]
   },
   seomyeon: {
+    lat: 35.1583,
+    lng: 129.0620,
     title: "서면 번화가 전포사잇길",
     sub: "SEOMYEON & JEONPO STREET",
     restaurants: [
@@ -212,6 +175,8 @@ const mapZones = {
 
 const activeZoneKey = ref('haeundae');
 const activeZone = computed(() => mapZones[activeZoneKey.value]);
+const mapLoaded = ref(false);
+const mapError = ref(null);
 
 const selectZone = (key) => {
   activeZoneKey.value = key;
@@ -219,11 +184,87 @@ const selectZone = (key) => {
 
 // lifecycle hook for real map sdk initialization
 onMounted(() => {
-  // 예: Kakao Map SDK 가 로드되었을 시 맵 인스턴스를 그리는 영역
-  // const container = document.getElementById('real-busan-map');
-  // const options = { center: new kakao.maps.LatLng(35.179554, 129.075641), level: 8 };
-  // const map = new kakao.maps.Map(container, options);
+  // 스크립트 동적 로드 (API 키 보안을 위해)
+  const apiKey = import.meta.env.VITE_KAKAO_MAP_API_KEY;
+  if (!apiKey) {
+    mapError.value = "API 키가 설정되지 않았습니다. .env 파일을 확인하세요.";
+    console.error("Kakao Map API key is missing in .env file");
+    return;
+  }
+
+  if (window.kakao && window.kakao.maps) {
+    initMap();
+  } else {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${apiKey}&libraries=services`;
+    
+    script.onload = () => {
+      if (window.kakao && window.kakao.maps) {
+        window.kakao.maps.load(() => {
+          initMap();
+        });
+      } else {
+        mapError.value = "카카오맵 SDK 로드에 실패했습니다.";
+        console.error("Kakao maps object is not available");
+      }
+    };
+    
+    script.onerror = (error) => {
+      mapError.value = "카카오맵 API 로드 실패 (403 Forbidden): 카카오 개발자 콘솔에서 JavaScript 키와 플랫폼 설정을 확인하세요.";
+      console.error("Failed to load Kakao Maps script:", error);
+      console.info(`
+        403 에러 해결 방법:
+        1. https://developers.kakao.com/console/app 접속
+        2. 내 애플리케이션 선택
+        3. '플랫폼' 메뉴에서 'Web 플랫폼 등록' 클릭
+        4. 사이트 도메인에 'http://localhost:5173' 추가 (또는 현재 사용 중인 포트)
+        5. JavaScript 키가 .env 파일의 VITE_KAKAO_MAP_API_KEY에 올바르게 설정되었는지 확인
+      `);
+    };
+    
+    document.head.appendChild(script);
+  }
 });
+
+const initMap = () => {
+  try {
+    const container = document.getElementById('real-busan-map');
+    if (!container) {
+      mapError.value = "지도 컨테이너를 찾을 수 없습니다.";
+      return;
+    }
+
+    const options = {
+      center: new window.kakao.maps.LatLng(35.14, 129.10), // 부산 중심부 대략적 설정
+      level: 8
+    };
+    
+    const map = new window.kakao.maps.Map(container, options);
+    mapLoaded.value = true;
+    mapError.value = null;
+
+    // 각 구역별 마커 추가
+    Object.keys(mapZones).forEach((key) => {
+      const zone = mapZones[key];
+      const markerPosition = new window.kakao.maps.LatLng(zone.lat, zone.lng);
+      
+      const marker = new window.kakao.maps.Marker({
+        position: markerPosition,
+        map: map,
+        title: zone.title
+      });
+
+      // 마커 클릭 시 해당 구역 선택
+      window.kakao.maps.event.addListener(marker, 'click', () => {
+        selectZone(key);
+      });
+    });
+  } catch (error) {
+    mapError.value = `지도 초기화 실패: ${error.message}`;
+    console.error("Failed to initialize map:", error);
+  }
+};
 </script>
 
 <style scoped>
