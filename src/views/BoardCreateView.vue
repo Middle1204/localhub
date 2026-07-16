@@ -249,14 +249,14 @@ function handleCancel() {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background: linear-gradient(135deg, #FFF8F5 0%, #FFE8D6 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 45%, #ffffff 100%);
   min-height: 100vh;
 }
 
 h1 {
   font-size: 2.5rem;
   margin-bottom: 40px;
-  color: #5A4A42;
+  color: #1e293b;
   font-weight: 700;
 }
 
@@ -270,7 +270,7 @@ h1 {
   background: white;
   padding: 30px;
   border-radius: 16px;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -282,27 +282,27 @@ h1 {
   display: block;
   margin-bottom: 10px;
   font-weight: 700;
-  color: #5A4A42;
+  color: #1e293b;
   font-size: 14px;
 }
 
 .input-field {
   width: 100%;
   padding: 14px;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   border-radius: 10px;
   font-size: 14px;
   font-family: inherit;
   background: white;
-  color: #5A4A42;
+  color: #1e293b;
   transition: all 0.3s ease;
 }
 
 .input-field:focus {
   outline: none;
-  border-color: #FF9E64;
-  box-shadow: 0 0 0 4px rgba(255, 158, 100, 0.1);
-  background: #FFF8F5;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+  background: #f0f9ff;
 }
 
 .content-textarea {
@@ -328,33 +328,33 @@ h1 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #FF9E64 0%, #FFB84D 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(255, 158, 100, 0.3);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 158, 100, 0.4);
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
 }
 
 .btn-secondary {
-  background-color: #E8D4C4;
-  color: #5A4A42;
+  background-color: #e2e8f0;
+  color: #1e293b;
 }
 
 .btn-secondary:hover {
-  background-color: #DCC4B4;
+  background-color: #cbd5e1;
 }
 
 .btn-search {
-  background: linear-gradient(135deg, #FF9E64 0%, #FFB84D 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   color: white;
   padding: 12px;
   font-size: 13px;
   margin-top: 8px;
   width: 100%;
-  box-shadow: 0 4px 12px rgba(255, 158, 100, 0.2);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
 }
 
 .btn-search:hover {
@@ -366,7 +366,7 @@ h1 {
   background: white;
   padding: 30px;
   border-radius: 16px;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -376,7 +376,7 @@ h1 {
 
 .sidebar h3 {
   margin: 0;
-  color: #5A4A42;
+  color: #1e293b;
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -397,47 +397,47 @@ h1 {
 .image-placeholder {
   width: 100%;
   height: 180px;
-  background: linear-gradient(135deg, #FFE4D4 0%, #FFD6B8 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #A87C59;
+  color: #64748b;
   font-size: 14px;
   font-weight: 500;
 }
 
 .selected-info {
   padding: 14px;
-  background: linear-gradient(135deg, #FFF8F5 0%, #FFE8D6 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   border-radius: 10px;
-  border-left: 4px solid #FF9E64;
+  border-left: 4px solid #0ea5e9;
 }
 
 .selected-info p {
   margin: 6px 0;
   font-size: 13px;
-  color: #5A4A42;
+  color: #1e293b;
 }
 
 .selected-info strong {
-  color: #5A4A42;
+  color: #1e293b;
   font-weight: 700;
 }
 
 .category-badge {
   display: inline-block;
-  background: linear-gradient(135deg, #FF9E64 0%, #FFB84D 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   color: white;
   padding: 4px 10px;
   border-radius: 8px;
   font-size: 11px;
   font-weight: 700;
   margin: 6px 0;
-  box-shadow: 0 2px 8px rgba(255, 158, 100, 0.2);
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
 }
 
 .address {
-  color: #7A6A62;
+  color: #475569;
   font-size: 12px;
   line-height: 1.4;
 }
@@ -451,24 +451,24 @@ h1 {
 .filter-section label {
   font-weight: 700;
   font-size: 13px;
-  color: #5A4A42;
+  color: #1e293b;
 }
 
 .select-field {
   padding: 10px;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   border-radius: 8px;
   font-size: 13px;
   font-family: inherit;
   background: white;
-  color: #5A4A42;
+  color: #1e293b;
   transition: all 0.3s ease;
 }
 
 .select-field:focus {
   outline: none;
-  border-color: #FF9E64;
-  box-shadow: 0 0 0 4px rgba(255, 158, 100, 0.1);
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
 }
 
 .search-section {
@@ -484,7 +484,7 @@ h1 {
 
 /* 가게 리스트 */
 .place-list {
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   border-radius: 10px;
   overflow: hidden;
   height: 350px;
@@ -499,7 +499,7 @@ h1 {
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #A87C59;
+  color: #64748b;
   font-size: 13px;
   font-weight: 500;
 }
@@ -516,11 +516,11 @@ h1 {
 }
 
 .scroll-container::-webkit-scrollbar-track {
-  background: #FFE8D6;
+  background: #e0f2fe;
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #FF9E64 0%, #FFB84D 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   border-radius: 3px;
 }
 
@@ -529,7 +529,7 @@ h1 {
   display: flex;
   gap: 12px;
   padding: 10px;
-  border-bottom: 1px solid #FFE4D4;
+  border-bottom: 1px solid #e2e8f0;
   cursor: pointer;
   transition: all 0.2s ease;
   align-items: center;
@@ -537,12 +537,12 @@ h1 {
 }
 
 .place-item:hover {
-  background-color: #FFF8F5;
+  background-color: #f0f9ff;
 }
 
 .place-item.active {
-  background: linear-gradient(135deg, #FFE4D4 0%, #FFD6B8 100%);
-  border-left: 3px solid #FF9E64;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  border-left: 3px solid #0ea5e9;
   padding-left: 7px;
 }
 
@@ -551,7 +551,7 @@ h1 {
   height: 90px;
   border-radius: 8px;
   overflow: hidden;
-  background: linear-gradient(135deg, #FFE4D4 0%, #FFD6B8 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -569,12 +569,12 @@ h1 {
 .thumb-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #FFE4D4 0%, #FFD6B8 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 10px;
-  color: #A87C59;
+  color: #64748b;
   font-weight: 500;
 }
 
@@ -591,7 +591,7 @@ h1 {
   margin: 0;
   font-size: 13px;
   font-weight: 700;
-  color: #5A4A42;
+  color: #1e293b;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -601,7 +601,7 @@ h1 {
 .place-item-category {
   margin: 3px 0 0 0;
   font-size: 11px;
-  color: #A87C59;
+  color: #64748b;
   white-space: nowrap;
   font-weight: 500;
 }

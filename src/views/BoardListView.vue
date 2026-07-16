@@ -156,7 +156,7 @@ function formatDate(timestamp) {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background: linear-gradient(135deg, #FFF8F5 0%, #FFE8D6 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 45%, #ffffff 100%);
   min-height: 100vh;
 }
 
@@ -170,26 +170,26 @@ function formatDate(timestamp) {
 .header h1 {
   margin: 0;
   font-size: 2.5rem;
-  color: #5A4A42;
+  color: #1e293b;
   font-weight: 700;
 }
 
 .btn-create {
   padding: 14px 32px;
-  background: linear-gradient(135deg, #FF9E64 0%, #FFB84D 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   color: white;
   border: none;
   border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 158, 100, 0.3);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
   font-size: 15px;
 }
 
 .btn-create:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 158, 100, 0.4);
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
 }
 
 .search-section {
@@ -200,29 +200,29 @@ function formatDate(timestamp) {
   width: 100%;
   max-width: 500px;
   padding: 14px 20px;
-  border: 2px solid #FFD6B8;
+  border: 2px solid #bae6fd;
   border-radius: 12px;
   font-size: 14px;
   background: white;
-  color: #5A4A42;
+  color: #1e293b;
   transition: all 0.3s ease;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: #FF9E64;
-  box-shadow: 0 0 0 4px rgba(255, 158, 100, 0.1);
-  background: #FFF8F5;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+  background: #f0f9ff;
 }
 
 .search-input::placeholder {
-  color: #D4A574;
+  color: #94a3b8;
 }
 
 .empty-message {
   text-align: center;
   padding: 80px 20px;
-  color: #A87C59;
+  color: #64748b;
   font-size: 18px;
   font-weight: 500;
 }
@@ -246,7 +246,7 @@ function formatDate(timestamp) {
 }
 
 .post-card:hover {
-  box-shadow: 0 12px 35px rgba(255, 158, 100, 0.2);
+  box-shadow: 0 12px 35px rgba(14, 165, 233, 0.2);
   transform: translateY(-8px);
 }
 
@@ -254,7 +254,7 @@ function formatDate(timestamp) {
   width: 100%;
   height: 200px;
   overflow: hidden;
-  background: linear-gradient(135deg, #FFE4D4 0%, #FFD6B8 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
   position: relative;
 }
 
@@ -271,8 +271,8 @@ function formatDate(timestamp) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #FFE4D4 0%, #FFD6B8 100%);
-  color: #A87C59;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  color: #64748b;
   font-size: 14px;
   font-weight: 500;
 }
@@ -285,7 +285,7 @@ function formatDate(timestamp) {
 .post-title {
   margin: 0 0 12px 0;
   font-size: 1.2rem;
-  color: #5A4A42;
+  color: #1e293b;
   line-height: 1.5;
   font-weight: 700;
 }
@@ -293,7 +293,7 @@ function formatDate(timestamp) {
 .place-name {
   margin: 10px 0;
   font-size: 13px;
-  color: #FF8C6B;
+  color: #0ea5e9;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -303,14 +303,14 @@ function formatDate(timestamp) {
 .post-date {
   margin: 8px 0;
   font-size: 12px;
-  color: #A87C59;
+  color: #64748b;
   font-weight: 500;
 }
 
 .post-preview {
   margin: 12px 0 0 0;
   font-size: 13px;
-  color: #7A6A62;
+  color: #475569;
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -323,9 +323,9 @@ function formatDate(timestamp) {
   display: flex;
   gap: 12px;
   padding: 14px 20px;
-  background: linear-gradient(135deg, #FFF8F5 0%, #FFE8D6 100%);
-  border-top: 1px solid #FFE4D4;
-  border-bottom: 1px solid #FFE4D4;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
   justify-content: space-around;
 }
 
@@ -344,18 +344,18 @@ function formatDate(timestamp) {
 .stat-value {
   font-size: 13px;
   font-weight: 700;
-  color: #FF8C6B;
+  color: #0ea5e9;
 }
 
 .card-footer {
   padding: 12px 20px;
-  border-top: 1px solid #FFE4D4;
+  border-top: 1px solid #e2e8f0;
   text-align: center;
 }
 
 .btn-detail {
   padding: 10px 20px;
-  background: linear-gradient(135deg, #FF9E64 0%, #FFB84D 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -368,7 +368,7 @@ function formatDate(timestamp) {
 
 .btn-detail:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(255, 158, 100, 0.3);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
 /* 모바일 반응형 */
