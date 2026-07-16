@@ -1,14 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <footer class="site-footer">
-    <div>지역 커뮤니티 · 따뜻한 환대 💛</div>
-  </footer>
-</template>
-
-<style scoped>
-.site-footer { padding:12px 20px; border-top:1px solid var(--border); text-align:center; color:var(--text) }
-</style>
-=======
   <footer class="bg-slate-900 text-slate-300 border-t border-slate-800 font-sans">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <!-- 3-Column Grid Layout (Newsletter Section Removed) -->
@@ -143,4 +133,3 @@ const policies = [
 <style scoped>
 /* Standard Tailwind class customization if required */
 </style>
->>>>>>> 2c7dcaf38e2c18851fea4012a83ef4825c9f255e

@@ -21,6 +21,17 @@
       <div class="space-y-3">
         <p class="text-[11px] text-slate-400 font-bold uppercase tracking-wider">주요 테마별 빠른 탐색</p>
         <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+          <!-- AI 챗봇 버튼 -->
+          <button 
+            @click="handleAIChatClick"
+            class="px-4 py-2.5 bg-gradient-to-br from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600 text-white border border-blue-400 rounded-full text-xs sm:text-sm font-semibold shadow-md shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-1.5"
+            title="AI 챗봇과 대화하기"
+          >
+            <span>🤖</span>
+            <span>AI가이드</span>
+          </button>
+          
+          <!-- 기존 태그 버튼들 -->
           <button 
             v-for="(tag, idx) in quickTags" 
             :key="idx"
@@ -38,10 +49,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
+
+// 전역 챗봇 열기 함수 주입
+const openChatbot = inject('openChatbot');
 
 // Define Quick Search Tags
 const quickTags = ref([
@@ -53,6 +67,12 @@ const quickTags = ref([
 ]);
 
 const emit = defineEmits(['select-category']);
+
+const handleAIChatClick = () => {
+  if (openChatbot) {
+    openChatbot();
+  }
+};
 
 const handleTagClick = (keyword) => {
   // 1. Emit a custom event if parent component wants to filter live data instantly

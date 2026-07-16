@@ -290,6 +290,12 @@ function toggle() {
   }
 }
 
+// 외부에서 챗봇을 열 수 있도록 노출
+function openChat() {
+  isOpen.value = true
+  nextTick(scrollToBottom)
+}
+
 function scrollToBottom() {
   const el = messagesRef.value
   if (el) {
