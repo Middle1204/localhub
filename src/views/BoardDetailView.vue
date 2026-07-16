@@ -34,7 +34,7 @@ const isUserBookmarked = ref(false)
 const bookmarkCount = ref(0)  // 추가
 const viewCount = ref(0)
 
-onMounted(async () => {
+onMounted(() => {
   const postId = parseInt(route.params.board_id)
   post.value = getPostById(postId)
   
@@ -43,8 +43,8 @@ onMounted(async () => {
     return
   }
   
-  // 비동기로 가게 정보 로드
-  place.value = await getPlaceById(post.value.placeId)
+  // 가게 정보 로드 (동기)
+  place.value = getPlaceById(post.value.placeId)
   
   // 조회수 증가
   viewCount.value = incrementViewCount(postId)

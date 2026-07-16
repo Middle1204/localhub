@@ -28,23 +28,23 @@ const formData = ref({
 /**
  * 초기 로드
  */
-onMounted(async () => {
+onMounted(() => {
   categories.value = getAllCategories()
-  await loadPlaces()
+  loadPlaces()
 })
 
 /**
  * 카테고리 선택 시 가게 로드
  */
-async function loadPlaces() {
+function loadPlaces() {
   isLoadingPlaces.value = true
   try {
     if (searchQuery.value) {
       // 검색 모드
-      places.value = await searchPlaces(searchQuery.value, selectedCategory.value)
+      places.value = searchPlaces(searchQuery.value, selectedCategory.value)
     } else {
       // 카테고리별 모드
-      places.value = await getPlacesByCategory(selectedCategory.value, 50)
+      places.value = getPlacesByCategory(selectedCategory.value, 50)
     }
     selectedPlace.value = null
   } catch (error) {
@@ -58,16 +58,16 @@ async function loadPlaces() {
 /**
  * 카테고리 변경
  */
-async function handleCategoryChange() {
+function handleCategoryChange() {
   searchQuery.value = ''
-  await loadPlaces()
+  loadPlaces()
 }
 
 /**
  * 검색
  */
-async function handleSearch() {
-  await loadPlaces()
+function handleSearch() {
+  loadPlaces()
 }
 
 /**
@@ -80,7 +80,7 @@ function handleSelectPlace(place) {
 /**
  * 게시글 작성
  */
-async function handleCreatePost() {
+function handleCreatePost() {
   if (!formData.value.title.trim() || !formData.value.content.trim() || !formData.value.password) {
     alert('모든 필드를 입력해주세요.')
     return
