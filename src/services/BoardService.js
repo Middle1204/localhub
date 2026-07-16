@@ -284,3 +284,37 @@ export function getViewCount(postId) {
 const viewCounts = JSON.parse(localStorage.getItem(VIEW_COUNTS_KEY) || '{}')
 return viewCounts[postId] || 0
 }
+
+// Backwards-compatible default export for modules that import the service as a default
+const BoardService = {
+  // primary helpers
+  getAll: getAllPosts,
+  getAllPosts: getAllPosts,
+  getPostById: getPostById,
+  createPost: createPost,
+  updatePost: updatePost,
+  deletePost: deletePost,
+  clearAllPosts: clearAllPosts,
+
+  // search
+  search: searchPosts,
+  searchPosts: searchPosts,
+
+  // likes
+  addLike: addLike,
+  removeLike: removeLike,
+  isLiked: isLiked,
+  getLikes: getLikes,
+
+  // bookmarks
+  addBookmark: addBookmark,
+  removeBookmark: removeBookmark,
+  isBookmarked: isBookmarked,
+  getBookmarkCount: getBookmarkCount,
+
+  // views
+  incrementViewCount: incrementViewCount,
+  getViewCount: getViewCount,
+}
+
+export default BoardService
