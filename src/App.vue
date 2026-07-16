@@ -1,15 +1,37 @@
 <script setup>
 import { useRouter } from 'vue-router'
-import ChatView from './views/ChatView.vue'
-import { ref } from 'vue';
+import { ref, provide, onMounted, watch } from 'vue';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import Chatbot from './components/Chatbot.vue';
 
 const router = useRouter()
 const isModalOpen = ref(false);
+const chatbotRef = ref(null);
+
 const handleOpenModal = () => {
   isModalOpen.value = true;
 };
+
+// 전역에서 챗봇을 열 수 있도록 제공
+const openChatbot = () => {
+  if (chatbotRef.value) {
+    chatbotRef.value.openChat();
+  }
+};
+
+// 자식 컴포넌트에서 챗봇을 열 수 있도록 제공
+provide('openChatbot', openChatbot);
+
+// 페이지 로드 시 항상 맨 위로 스크롤
+onMounted(() => {
+  window.scrollTo(0, 0);
+});
+
+// 라우팅 변경 시 맨 위로 스크롤
+watch(() => router.currentRoute.value.path, () => {
+  window.scrollTo(0, 0);
+});
 
 </script>
 
@@ -23,6 +45,9 @@ const handleOpenModal = () => {
 
     <!-- 모든 페이지에 공통으로 보일 푸터 -->
     <Footer />
+
+    <!-- 챗봇 (전역) -->
+    <Chatbot ref="chatbotRef" />
 
     <!-- 글쓰기 모달 (전역으로 관리) -->
     <div v-if="isModalOpen" class="fixed inset-0 ...">
