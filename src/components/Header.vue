@@ -6,7 +6,7 @@
         <div class="flex items-center gap-3">
           <router-link to="/" class="flex items-center gap-2 group">
             <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
-              <i class="fa-solid fa-anchor text-lg"></i>
+              <div class="w-5 h-5" v-html="svgIcons.anchor"></div>
             </div>
             <span class="text-xl font-black tracking-tight text-slate-800 group-hover:text-sky-500 transition-colors">
               local<span class="text-sky-500">hub</span>
@@ -27,13 +27,12 @@
           >
             홈
           </router-link>
-          <router-link 
-            to="/map" 
-            class="hover:text-sky-500 px-1 py-2 text-sm transition-all relative"
-            active-class="text-sky-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-sky-500 after:rounded-full"
+          <button 
+            @click="scrollToMap"
+            class="hover:text-sky-500 px-1 py-2 text-sm transition-all relative cursor-pointer"
           >
             맛집지도
-          </router-link>
+          </button>
           <router-link 
             to="/board" 
             class="hover:text-sky-500 px-1 py-2 text-sm transition-all relative"
@@ -42,7 +41,7 @@
             게시판
           </router-link>
           <router-link 
-            to="/ai-chat" 
+            to="/chat" 
             class="hover:text-sky-500 px-1 py-2 text-sm transition-all relative flex items-center gap-1"
             active-class="text-sky-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-sky-500 after:rounded-full"
           >
@@ -53,7 +52,7 @@
 
         <div class="hidden md:flex items-center flex-1 max-w-xs mx-8 relative">
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+            <div class="w-4 h-4 text-slate-400" v-html="svgIcons.search"></div>
           </div>
           <input 
             v-model="searchQuery"
@@ -72,7 +71,7 @@
               class="p-2 text-slate-500 hover:text-sky-500 hover:bg-sky-50 rounded-full transition-all relative" 
               title="부산 로컬 새소식"
             >
-              <i class="fa-regular fa-bell text-xl"></i>
+              <div class="w-5 h-5" v-html="svgIcons.bell"></div>
               <span v-if="hasUnreadNotification" class="absolute top-1.5 right-1.5 w-2 h-2 bg-rose-500 rounded-full"></span>
             </button>
             
@@ -98,15 +97,15 @@
             </div>
           </div>
           
-          <!-- Anonymous Trigger Write Button -->
-          <button 
-            @click="triggerWrite" 
+          <!-- Write Button -->
+          <router-link 
+            to="/create"
             class="inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-sky-400 to-blue-600 hover:from-sky-500 hover:to-blue-700 shadow-md shadow-sky-500/20 hover:shadow-sky-500/30 transition-all" 
-            title="로그인 없이 자유로운 제보하기"
+            title="글쓰기"
           >
-            <i class="fa-solid fa-pencil text-xs mr-2"></i> 
+            <div class="w-3 h-3 mr-2" v-html="svgIcons.write"></div> 
             <span class="hidden sm:inline">글쓰기</span>
-          </button>
+          </router-link>
 
           <!-- Mobile Menu Toggle Button -->
           <button 
@@ -128,7 +127,7 @@
         <!-- Search bar inside mobile drawer -->
         <div class="relative w-full mb-3">
           <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+            <div class="w-4 h-4 text-slate-400" v-html="svgIcons.search"></div>
           </div>
           <input 
             v-model="searchQuery"
@@ -148,14 +147,12 @@
         >
           홈
         </router-link>
-        <router-link 
-          to="/map" 
-          class="block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-500"
-          active-class="bg-sky-50/50 text-sky-500 font-bold"
-          @click="isMobileMenuOpen = false"
+        <button
+          @click="scrollToMap"
+          class="block w-full text-left px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-500 cursor-pointer"
         >
           맛집지도
-        </router-link>
+        </button>
         <router-link 
           to="/board" 
           class="block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-500"
@@ -165,7 +162,7 @@
           게시판
         </router-link>
         <router-link 
-          to="/ai-chat" 
+          to="/chat" 
           class="block px-4 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-500 flex items-center justify-between"
           active-class="bg-sky-50/50 text-sky-500 font-bold"
           @click="isMobileMenuOpen = false"
@@ -179,16 +176,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref, nextTick } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { svgIcons } from '../assets/svgGroup.js';
 
 const router = useRouter();
+const route = useRoute();
 const searchQuery = ref('');
 const isMobileMenuOpen = ref(false);
 const showNotificationBox = ref(false);
 const hasUnreadNotification = ref(true);
-
-const emit = defineEmits(['open-write-modal']);
 
 // Triggering search and routing to search view
 const handleSearch = () => {
@@ -211,10 +208,45 @@ const toggleNotifications = () => {
   }
 };
 
-// Triggering the login-free custom write modal
-const triggerWrite = () => {
-  emit('open-write-modal');
+// Scroll to MapPreview component
+const scrollToMap = () => {
   isMobileMenuOpen.value = false;
+  
+  // If not on home page, navigate to home first
+  if (route.path !== '/') {
+    router.push('/').then(() => {
+      // Wait for DOM to fully render
+      nextTick(() => {
+        setTimeout(() => {
+          scrollToMapElement();
+        }, 500);
+      });
+    });
+  } else {
+    scrollToMapElement();
+  }
+};
+
+const scrollToMapElement = () => {
+  // Find MapPreview component by looking for an element with specific class or id
+  const mapElement = document.querySelector('[data-map-preview]');
+  
+  if (mapElement) {
+    // Get header height for offset
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.offsetHeight : 0;
+    
+    // Calculate position with offset
+    const elementPosition = mapElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  } else {
+    console.warn('MapPreview element not found');
+  }
 };
 </script>
 

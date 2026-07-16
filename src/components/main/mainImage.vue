@@ -7,7 +7,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
       
       <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-sky-100 text-sky-800 text-xs font-bold rounded-full uppercase tracking-wider mb-5 shadow-sm border border-sky-200/50">
-        <i class="fa-solid fa-ship animate-pulse"></i> Authentic Busan Foodie Hub
+        <div class="w-3.5 h-3.5 animate-pulse" v-html="svgIcons.ship"></div> Authentic Busan Foodie Hub
       </span>
       
       <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-800 mb-5 leading-tight sm:leading-snug">
@@ -51,6 +51,7 @@
 <script setup>
 import { ref, inject } from 'vue';
 import { useRouter } from 'vue-router';
+import { svgIcons } from '../../assets/svgGroup.js';
 
 const router = useRouter();
 

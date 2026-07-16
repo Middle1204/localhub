@@ -72,7 +72,7 @@
               {{ post.author }}
             </span>
             <div class="flex items-center gap-3">
-              <span class="flex items-center gap-0.5"><i class="fa-regular fa-eye text-slate-300"></i> {{ post.views }}</span>
+              <span class="flex items-center gap-0.5"><i class="fa-regular fa-eye text-slate-300"></i> {{ post.views.toLocaleString() }}</span>
               <!-- Liking interaction button -->
               <button 
                 @click.stop="likePost(post.id)"
@@ -80,7 +80,7 @@
                 title="이 게시글에 공감하기"
               >
                 <i class="fa-solid fa-heart text-slate-300 group-hover/heart:text-rose-400 group-hover/heart:scale-110 transition-all" :class="{ 'text-rose-500': post.liked }"></i> 
-                <span :class="{ 'text-rose-500': post.liked }">{{ post.likes }}</span>
+                <span :class="{ 'text-rose-500': post.liked }">{{ post.likes.toLocaleString() }}</span>
               </button>
             </div>
           </div>
@@ -91,66 +91,65 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import boardsData from '../../data/boards/dummy_board.json';
+
+// Places 데이터 import
+import placesGwangwang from '../../data/places/부산_관광지.json';
+import placesLeports from '../../data/places/부산_레포츠.json';
+import placesMunhwa from '../../data/places/부산_문화시설.json';
+import placesShopping from '../../data/places/부산_쇼핑.json';
+import placesSukbak from '../../data/places/부산_숙박.json';
+import placesYeohaeng from '../../data/places/부산_여행코스.json';
+import placesChukje from '../../data/places/부산_축제공연행사.json';
 
 const router = useRouter();
 
-// Mock Sample Data
-const popularPosts = ref([
-  {
-    id: 1,
-    title: "수변최고돼지국밥 민락본점, 항정국밥의 숨겨진 조화",
-    region: "광안리 해변길",
-    category: "돼지국밥",
-    excerpt: "국물이 걸쭉하고 가벼운 한약재 풍미가 아주 매력적입니다. 항정살 특유의 기름지고 고소한 맛을 정구지(부추)로 꼭 잡아서 드셔보세요.",
-    author: "부산갈매기99",
-    views: 1245,
-    likes: 54,
-    liked: false,
-    image: "https://placehold.co/600x400/0ea5e9/ffffff?text=Busan+Gukbap"
-  },
-  {
-    id: 2,
-    title: "해운대 가야밀면 대기 안 서는 아침 시간대 꿀팁",
-    region: "해운대 달맞이길",
-    category: "밀면 전문점",
-    excerpt: "오전 10시 40분쯤 오픈 전에 맞춰 가시면 한 번에 들어갑니다. 새콤한 양념장에 한방 약재 육수를 자작하게 붓는 것 잊지 마세요.",
-    author: "밀면콜렉터",
-    views: 980,
-    likes: 42,
-    liked: false,
-    image: "https://placehold.co/600x400/0284c7/ffffff?text=Haeundae+Milmyeon"
-  },
-  {
-    id: 3,
-    title: "영도 흰여울마을 감성 오션뷰 통유리 카페 3대장",
-    region: "영도 절영길",
-    category: "감성 카페",
-    excerpt: "바다 한가운데에 떠 있는 듯한 느낌을 선사하는 흰여울마을 절벽 위 테라스 스팟들만 직접 다녀오고 고심 끝에 골랐습니다.",
-    author: "오션러버",
-    views: 890,
-    likes: 38,
-    liked: false,
-    image: "https://placehold.co/600x400/0369a1/ffffff?text=Yeongdo+Cafe"
-  },
-  {
-    id: 4,
-    title: "자갈치 곱창 골목 '백화양곱창' 연탄불 세트 솔직 후기",
-    region: "남포·자갈치",
-    category: "양곱창 노포",
-    excerpt: "이모님들이 눈앞에서 직접 연탄불에 구워주시는 노포 감성은 최고입니다. 특유의 짠맛과 쫄깃한 곱창 식감이 소주를 부르네요.",
-    author: "노포매니아",
-    views: 742,
-    likes: 31,
-    liked: false,
-    image: "https://placehold.co/600x400/0c4a6e/ffffff?text=Jagalchi+Gopchang"
-  }
-]);
+// 모든 places 데이터를 하나의 배열로 통합
+const allPlaces = [
+  ...placesGwangwang.items,
+  ...placesLeports.items,
+  ...placesMunhwa.items,
+  ...placesShopping.items,
+  ...placesSukbak.items,
+  ...placesYeohaeng.items,
+  ...placesChukje.items
+];
+
+// placeId로 장소 정보 찾기
+const getPlaceById = (placeId) => {
+  return allPlaces.find(place => place.contentid === placeId);
+};
+
+// 데이터를 ref로 복사하여 수정 가능하게 만듦
+const boards = ref(boardsData.map(board => ({ ...board, liked: false })));
+
+// 실제 데이터를 좋아요 순으로 정렬하고 상위 4개만 표시
+const popularPosts = computed(() => {
+  return [...boards.value]
+    .sort((a, b) => b.likes - a.likes) // 좋아요 수 내림차순 정렬
+    .slice(0, 4) // 상위 4개만
+    .map(post => {
+      const place = getPlaceById(post.placeId);
+      return {
+        id: post.id,
+        title: post.title,
+        region: "부산", // 기본 지역
+        category: "로컬 추천", // 기본 카테고리
+        excerpt: post.content.length > 50 ? post.content.substring(0, 50) + '...' : post.content,
+        author: "익명",
+        views: post.views,
+        likes: post.likes,
+        liked: post.liked,
+        image: place?.firstimage || `https://placehold.co/600x400/0ea5e9/ffffff?text=Post+${post.id}`
+      };
+    });
+});
 
 // Local Like Logic
 const likePost = (id) => {
-  const post = popularPosts.value.find(p => p.id === id);
+  const post = boards.value.find(p => p.id === id);
   if (post) {
     if (!post.liked) {
       post.likes++;
