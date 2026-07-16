@@ -42,7 +42,7 @@
 
         <!-- Card Body -->
         <div class="p-5 flex-grow flex flex-col justify-between">
-          <div>
+          <div> 
             <!-- Badges -->
             <div class="flex items-center gap-1.5 text-[10px] font-extrabold text-sky-600 mb-2.5">
               <span class="px-2 py-0.5 bg-sky-50 rounded">{{ post.region }}</span>
