@@ -280,15 +280,15 @@ function formatDate(timestamp) {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background: linear-gradient(135deg, #FFF8F5 0%, #FFE8D6 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 45%, #ffffff 100%);
   min-height: 100vh;
 }
 
 .back-btn {
   margin-bottom: 20px;
   padding: 12px 24px;
-  background-color: #E8D4C4;
-  color: #5A4A42;
+  background-color: #e2e8f0;
+  color: #1e293b;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -298,7 +298,7 @@ function formatDate(timestamp) {
 }
 
 .back-btn:hover {
-  background-color: #DCC4B4;
+  background-color: #cbd5e1;
   transform: translateX(-4px);
 }
 
@@ -306,7 +306,7 @@ function formatDate(timestamp) {
   background: white;
   padding: 40px;
   border-radius: 16px;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
 }
 
@@ -319,29 +319,29 @@ function formatDate(timestamp) {
 .post-title {
   margin: 0 0 12px 0;
   font-size: 2.2rem;
-  color: #5A4A42;
+  color: #1e293b;
   font-weight: 700;
 }
 
 .post-meta {
   margin: 0 0 24px 0;
   font-size: 14px;
-  color: #A87C59;
+  color: #64748b;
   font-weight: 500;
 }
 
 .place-info {
   padding: 18px;
-  background: linear-gradient(135deg, #FFF8F5 0%, #FFE8D6 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   border-radius: 12px;
-  border-left: 4px solid #FF9E64;
+  border-left: 4px solid #0ea5e9;
   margin-bottom: 30px;
 }
 
 .place-label {
   margin: 0 0 8px 0;
   font-size: 12px;
-  color: #A87C59;
+  color: #64748b;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -350,34 +350,34 @@ function formatDate(timestamp) {
 .place-name {
   margin: 8px 0;
   font-size: 1.1rem;
-  color: #5A4A42;
+  color: #1e293b;
   font-weight: 700;
 }
 
 .place-address {
   margin: 8px 0 0 0;
   font-size: 13px;
-  color: #7A6A62;
+  color: #475569;
   line-height: 1.5;
 }
 
 .post-content {
   padding: 24px;
-  background: linear-gradient(135deg, #FFF8F5 0%, #FFE8D6 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   border-radius: 12px;
   line-height: 1.8;
   white-space: pre-wrap;
   word-wrap: break-word;
-  color: #5A4A42;
+  color: #1e293b;
   margin-bottom: 30px;
-  border: 1px solid #FFE4D4;
+  border: 1px solid #e2e8f0;
 }
 
 .stats-section {
   display: flex;
   gap: 24px;
   padding-top: 20px;
-  border-top: 2px solid #FFE4D4;
+  border-top: 2px solid #e2e8f0;
 }
 
 .stat-item {
@@ -391,7 +391,7 @@ function formatDate(timestamp) {
 }
 
 .stat-value {
-  color: #FF8C6B;
+  color: #0ea5e9;
   font-weight: 700;
   font-size: 16px;
 }
@@ -419,11 +419,11 @@ function formatDate(timestamp) {
 .image-placeholder {
   width: 100%;
   height: 300px;
-  background: linear-gradient(135deg, #FFE4D4 0%, #FFD6B8 100%);
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #A87C59;
+  color: #64748b;
   font-size: 14px;
   font-weight: 500;
 }
@@ -445,32 +445,32 @@ function formatDate(timestamp) {
 }
 
 .btn-edit {
-  background: linear-gradient(135deg, #FFB84D 0%, #FF9E64 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(255, 158, 100, 0.2);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
 }
 
 .btn-edit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 158, 100, 0.3);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
 }
 
 .btn-delete {
-  background-color: #FFB3A0;
-  color: #5A4A42;
+  background-color: #fca5a5;
+  color: #1e293b;
   font-weight: 700;
 }
 
 .btn-delete:hover {
-  background-color: #FF9E8A;
+  background-color: #f87171;
   transform: translateY(-2px);
 }
 
 .interaction-section {
   padding: 18px;
-  background: linear-gradient(135deg, #FFF8F5 0%, #FFE8D6 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   border-radius: 12px;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -482,25 +482,25 @@ function formatDate(timestamp) {
   gap: 10px;
   padding: 12px;
   background: white;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 700;
   font-size: 13px;
-  color: #5A4A42;
+  color: #1e293b;
 }
 
 .interaction-btn:hover {
-  background: #FFF8F5;
-  border-color: #FF9E64;
+  background: #f0f9ff;
+  border-color: #0ea5e9;
   transform: translateY(-2px);
 }
 
 .interaction-btn.active {
-  background: linear-gradient(135deg, #FFE4D4 0%, #FFD6B8 100%);
-  border-color: #FF9E64;
-  color: #FF8C6B;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  border-color: #0ea5e9;
+  color: #0ea5e9;
 }
 
 .interaction-btn .icon {
@@ -513,7 +513,7 @@ function formatDate(timestamp) {
 
 .interaction-btn .count {
   font-weight: 700;
-  color: #FF8C6B;
+  color: #0ea5e9;
 }
 
 .view-count-item {
@@ -522,11 +522,11 @@ function formatDate(timestamp) {
   gap: 10px;
   padding: 12px;
   background: white;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   border-radius: 10px;
   font-weight: 700;
   font-size: 13px;
-  color: #5A4A42;
+  color: #1e293b;
 }
 
 .view-count-item .icon {
@@ -539,7 +539,7 @@ function formatDate(timestamp) {
 
 .view-count-item .count {
   font-weight: 700;
-  color: #FF8C6B;
+  color: #0ea5e9;
 }
 
 /* 모달 */
@@ -562,7 +562,7 @@ function formatDate(timestamp) {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   width: 90%;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
 }
 
 .modal-header {
@@ -570,8 +570,8 @@ function formatDate(timestamp) {
   justify-content: space-between;
   align-items: center;
   padding: 24px;
-  border-bottom: 2px solid #FFE4D4;
-  background: linear-gradient(135deg, #FF9E64 0%, #FFB84D 100%);
+  border-bottom: 2px solid #e2e8f0;
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   border-radius: 14px 14px 0 0;
 }
 
@@ -601,7 +601,7 @@ function formatDate(timestamp) {
 }
 
 .modal-body p {
-  color: #5A4A42;
+  color: #1e293b;
   margin-bottom: 12px;
   font-weight: 600;
 }
@@ -609,26 +609,26 @@ function formatDate(timestamp) {
 .input-field {
   width: 100%;
   padding: 12px;
-  border: 2px solid #FFE4D4;
+  border: 2px solid #e2e8f0;
   border-radius: 10px;
   font-size: 14px;
   font-family: inherit;
-  color: #5A4A42;
+  color: #1e293b;
   background: white;
   transition: all 0.3s ease;
 }
 
 .input-field:focus {
   outline: none;
-  border-color: #FF9E64;
-  box-shadow: 0 0 0 4px rgba(255, 158, 100, 0.1);
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
 }
 
 .modal-footer {
   display: flex;
   gap: 10px;
   padding: 20px 24px;
-  border-top: 2px solid #FFE4D4;
+  border-top: 2px solid #e2e8f0;
 }
 
 .modal-footer .btn {
@@ -636,9 +636,9 @@ function formatDate(timestamp) {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #FF9E64 0%, #FFB84D 100%);
+  background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(255, 158, 100, 0.2);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
 }
 
 .btn-primary:hover {
@@ -646,13 +646,13 @@ function formatDate(timestamp) {
 }
 
 .btn-secondary {
-  background-color: #E8D4C4;
-  color: #5A4A42;
+  background-color: #e2e8f0;
+  color: #1e293b;
   font-weight: 700;
 }
 
 .btn-secondary:hover {
-  background-color: #DCC4B4;
+  background-color: #cbd5e1;
 }
 
 /* 모바일 반응형 */

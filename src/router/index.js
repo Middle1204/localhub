@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import MainView from '../views/Main.vue';
-import BoardListView from '../views/BoardList.vue';
-import BoardCreateView from '../views/BoardCreate.vue';
-import BoardDetailView from '../views/BoardDetail.vue';
-import ChatView from '../views/AiChat.vue';
+import BoardListView from '../views/BoardListView.vue';
+import BoardCreateView from '../views/BoardCreateView.vue';
+import BoardDetailView from '../views/BoardDetailView.vue';
+import ChatView from '../views/ChatView.vue';
 
 const routes = [
   {

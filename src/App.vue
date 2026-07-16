@@ -1,8 +1,16 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import ChatView from './views/ChatView.vue'
+import { ref } from 'vue';
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 
 const router = useRouter()
+const isModalOpen = ref(false);
+const handleOpenModal = () => {
+  isModalOpen.value = true;
+};
+
 </script>
 
 <template>
@@ -22,14 +30,3 @@ const router = useRouter()
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
-
-const isModalOpen = ref(false);
-const handleOpenModal = () => {
-  isModalOpen.value = true;
-};
-</script>
