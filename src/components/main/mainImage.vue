@@ -10,16 +10,18 @@
         <div class="w-3.5 h-3.5 animate-pulse" v-html="svgIcons.ship"></div> Authentic Busan Spots
       </span>
       
-      <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-800 mb-5 leading-tight sm:leading-snug">
+      <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-800 mb-5 leading-tight sm:leading-snug text-center">
         부산 토박이가 알려주는 <br class="sm:hidden"> 진짜 <span class="text-sky-500 underline decoration-sky-300 decoration-8 underline-offset-4">로컬 명소</span>
       </h1>
       
-      <p class="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-        거추장스러운 가입 없이 자유롭게 소통하는 광고 청정 정보 플랫폼! 해운대 해수욕장부터 감천문화마을, 태종대, 영도 오션뷰 카페까지 로컬들의 생생한 제보로 만나보세요.
-      </p>
+      <div class="flex justify-center mb-10">
+        <p class="text-sm sm:text-base text-slate-500 max-w-2xl leading-relaxed text-center">
+          거추장스러운 가입 없이 자유롭게 소통하는 광고 청정 정보 플랫폼! 해운대 해수욕장부터 감천문화마을, 태종대, 영도 오션뷰 카페까지 로컬들의 생생한 제보로 만나보세요.
+        </p>
+      </div>
 
       <div class="space-y-3">
-        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-wider">주요 테마별 빠른 탐색</p>
+        <p class="text-[11px] text-slate-400 font-bold uppercase tracking-wider text-center">주요 테마별 빠른 탐색</p>
         <div class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
           <!-- AI 챗봇 버튼 -->
           <button 

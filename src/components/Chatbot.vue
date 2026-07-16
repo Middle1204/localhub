@@ -345,6 +345,11 @@ function formatTime(timestamp) {
   const minutes = date.getMinutes().toString().padStart(2, '0')
   return `${hours}:${minutes}`
 }
+
+// 외부에서 챗봇을 열 수 있도록 노출
+defineExpose({
+  openChat
+})
 </script>
 
 <style scoped>

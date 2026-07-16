@@ -49,8 +49,8 @@ const router = createRouter({
     if (savedPosition) {
       return savedPosition;
     } else {
-      // 그렇지 않으면 페이지 맨 위로 스크롤
-      return { top: 0, behavior: 'smooth' };
+      // 그렇지 않으면 페이지 맨 위로 스크롤 (즉시 이동)
+      return { top: 0, left: 0 };
     }
   },
 });

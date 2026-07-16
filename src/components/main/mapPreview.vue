@@ -1,15 +1,19 @@
 <template>
-  <section data-map-preview class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-    <div class="mb-8">
-      <div class="flex items-center gap-2 mb-2">
-        <span class="w-2.5 h-6 bg-sky-500 rounded-full"></span>
-        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-800 tracking-tight">
-          🗺️ 부산 구역별 테마 명소지도
-        </h2>
+  <section data-map-preview class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- 섹션 헤더 -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-sky-50 to-blue-50 rounded-full mb-4 border border-sky-100">
+        <span class="text-xl">🗺️</span>
+        <span class="text-xs font-semibold text-sky-700 uppercase tracking-wide">부산 명소 지도</span>
       </div>
-      <p class="text-xs sm:text-sm text-slate-500">
-        지도의 로컬 마커를 클릭하여 부산 지역 대표 구역의 평점 높은 토박이 인증 명소 목록을 확인하세요.
-      </p>
+      <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-3 text-center">
+        구역별 테마 명소지도
+      </h2>
+      <div class="flex justify-center">
+        <p class="text-slate-600 max-w-2xl text-center">
+          지도의 로컬 마커를 클릭하여 부산 지역 대표 구역의 평점 높은 토박이 인증 명소 목록을 확인하세요
+        </p>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm">

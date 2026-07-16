@@ -159,14 +159,8 @@ code {
 }
 
 #app {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+  /* Vite 기본 템플릿 스타일 제거 - localhub 프로젝트는 full-width 디자인 사용 */
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
