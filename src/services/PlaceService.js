@@ -33,7 +33,7 @@ async function loadCategoryData(categoryId) {
   
   try {
     // Vite 경고 억제 - 런타임 시 동적으로 파일을 필요할 때만 로드
-    const module = await import(/* @vite-ignore */ `../data/${category.file}`)
+    const module = await import(/* @vite-ignore */ `../data/places/${category.file}`)
     const items = module.default.items || []
     
     // 가공된 데이터 저장
