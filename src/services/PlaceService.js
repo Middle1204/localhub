@@ -103,7 +103,8 @@ export async function getAllPlaces(limit = 5) {
 export async function getPlaceById(id) {
   for (const categoryKey of Object.keys(CATEGORIES)) {
     const places = await loadCategoryData(categoryKey)
-    const place = places.find(p => p.id === id)
+    // 타입 불일치 문제 해결: 문자열로 변환하여 비교
+    const place = places.find(p => String(p.id) === String(id))
     if (place) return place
   }
   return null

@@ -113,9 +113,9 @@ const allPlaces = [
   ...placesChukje.items
 ];
 
-// placeId로 장소 정보 찾기
+// placeId로 장소 정보 찾기 (타입 불일치 문제 해결)
 const getPlaceById = (placeId) => {
-  return allPlaces.find(place => place.contentid === placeId);
+  return allPlaces.find(place => String(place.contentid) === String(placeId));
 };
 
 // 데이터를 ref로 복사하여 수정 가능하게 만듦
