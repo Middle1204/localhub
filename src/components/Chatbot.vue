@@ -90,7 +90,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, nextTick, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch, nextTick, computed } from 'vue'
 import BoardService from '../services/BoardService.js'
 import { askOpenAI } from '../services/OpenAIService.js'
 
@@ -158,7 +158,22 @@ function saveContext() {
   } catch (e) {}
 }
 
-watch(messages, saveMessages)
+// persist messages on any mutation (deep watch)
+watch(messages, saveMessages, { deep: true })
+
+// ensure messages saved when user leaves/reloads page
+function handleBeforeUnload() {
+  try { localStorage.setItem(storageKey, JSON.stringify(messages.value)) } catch (e) {}
+}
+
+onBeforeUnmount(() => {
+  try { window.removeEventListener('beforeunload', handleBeforeUnload) } catch (e) {}
+})
+
+// register listener after component mounted
+onMounted(() => {
+  try { window.addEventListener('beforeunload', handleBeforeUnload) } catch (e) {}
+})
 watch(chatContext, saveContext, { deep: true })
 
 // 메시지 전송

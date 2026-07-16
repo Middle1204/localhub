@@ -136,8 +136,8 @@ return false
 }
 
 if (post.password !== password) {
-console.error('Password mismatch')
-return false
+  console.error('Password mismatch')
+  return false
 }
 
 post.title = title
