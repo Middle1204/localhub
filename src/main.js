@@ -1,8 +1,10 @@
+// src/main.js
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
-import router from './router' // 1. 라우터 불러오기
+import router from './router'
+import './style.css'
 
 const app = createApp(App)
-app.use(router) // 2. 라우터 등록
+
+app.use(router)
 app.mount('#app')

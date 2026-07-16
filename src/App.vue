@@ -1,3 +1,10 @@
+<script setup>
+import { useRouter } from 'vue-router'
+import ChatView from './views/ChatView.vue'
+
+const router = useRouter()
+</script>
+
 <template>
   <div id="app-wrapper">
     <!-- 모든 페이지에 공통으로 보일 헤더 -->
